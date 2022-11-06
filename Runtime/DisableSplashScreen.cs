@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace Kogane.Internal
@@ -8,12 +9,21 @@ namespace Kogane.Internal
         [RuntimeInitializeOnLoadMethod( RuntimeInitializeLoadType.BeforeSplashScreen )]
         private static void RuntimeInitializeOnLoadMethod()
         {
-            Application.focusChanged += OnFocusChanged;
+            if ( Application.isEditor ) return;
 
-            static void OnFocusChanged( bool isFocus )
+            if ( Application.platform == RuntimePlatform.WebGLPlayer )
             {
-                Application.focusChanged -= OnFocusChanged;
-                SplashScreen.Stop( SplashScreen.StopBehavior.StopImmediate );
+                Application.focusChanged += OnFocusChanged;
+
+                static void OnFocusChanged( bool isFocus )
+                {
+                    Application.focusChanged -= OnFocusChanged;
+                    SplashScreen.Stop( SplashScreen.StopBehavior.StopImmediate );
+                }
+            }
+            else
+            {
+                var _ = Task.Run( () => SplashScreen.Stop( SplashScreen.StopBehavior.StopImmediate ) );
             }
         }
     }
