@@ -15,6 +15,6 @@ Unity Personal ライセンスでもゲーム起動時に表示されるスプ�
 * Android IL2CPP ビルド
 * WebGL IL2CPP ビルド
 
-## メモ
+## 注意
 
-* IL2CPP ビルドする場合は Runtime フォルダを Assets フォルダ以下に移動しないと正常に動作しない？
+* Package Manager で本パッケージを導入した場合は一部のプラットフォームで正常に動作しません
