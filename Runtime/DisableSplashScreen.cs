@@ -9,8 +9,12 @@ namespace Kogane.Internal
         [RuntimeInitializeOnLoadMethod( RuntimeInitializeLoadType.BeforeSplashScreen )]
         private static void RuntimeInitializeOnLoadMethod()
         {
+            // Unity エディタでは何もしない
             if ( Application.isEditor ) return;
 
+            // プラットフォームが WebGL の場合は
+            // Application.focusChanged のタイミングで
+            // SplashScreen.Stop を呼び出すとスプラッシュスクリーンを停止できる
             if ( Application.platform == RuntimePlatform.WebGLPlayer )
             {
                 Application.focusChanged += OnFocusChanged;
@@ -18,12 +22,30 @@ namespace Kogane.Internal
                 static void OnFocusChanged( bool isFocus )
                 {
                     Application.focusChanged -= OnFocusChanged;
-                    SplashScreen.Stop( SplashScreen.StopBehavior.StopImmediate );
+                    Stop();
                 }
             }
+            // プラットフォームが WebGL 以外の場合は
+            // 別スレッドで SplashScreen.isFinished が true になるまで
+            // SplashScreen.Stop を呼び出すとスプラッシュスクリーンを停止できる
             else
             {
-                var _ = Task.Run( () => SplashScreen.Stop( SplashScreen.StopBehavior.StopImmediate ) );
+                _ = Task.Run
+                (
+                    async () =>
+                    {
+                        while ( !SplashScreen.isFinished )
+                        {
+                            Stop();
+                            await Task.Delay( 1 );
+                        }
+                    }
+                );
+            }
+
+            static void Stop()
+            {
+                SplashScreen.Stop( SplashScreen.StopBehavior.StopImmediate );
             }
         }
     }
