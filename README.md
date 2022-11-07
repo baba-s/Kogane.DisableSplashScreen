@@ -1,6 +1,10 @@
 # Kogane Disable Splash Screen
 
-ゲーム起動時に表示されるスプラッシュスクリーンを無効化するパッケージ
+Unity Personal ライセンスでもゲーム起動時に表示されるスプラッシュスクリーンを無効化できるパッケージ
+
+## 使い方
+
+「[DisableSplashScreen.cs](Runtime/DisableSplashScreen.cs)」を Unity プロジェクトの Assets フォルダ以下に追加するだけです
 
 ## 動作確認済みの環境
 
