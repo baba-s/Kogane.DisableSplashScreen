@@ -11,6 +11,7 @@ Unity Personal ライセンスでもゲーム起動時に表示されるスプ�
 * Unity 2022.1.11f1
 * Windows Mono2x ビルド
 * Windows IL2CPP ビルド
+* iOS IL2CPP ビルド
 * Android Mono2x ビルド
 * Android IL2CPP ビルド
 * WebGL IL2CPP ビルド
