@@ -1,6 +1,6 @@
 # Kogane Disable Splash Screen
 
-Unity Personal ライセンスでもゲーム起動時に表示されるスプラッシュスクリーンを無効化できるパッケージ
+Unity Personal ライセンスでもゲーム起動時に表示されるスプラッシュスクリーンを無効化できるスクリプト
 
 ## 使い方
 
