@@ -4,7 +4,7 @@ Unity Personal ライセンスでもゲーム起動時に表示されるスプ�
 
 ## 使い方
 
-「[DisableSplashScreen.cs](Runtime/DisableSplashScreen.cs)」を Unity プロジェクトの Assets フォルダ以下に追加するだけです
+「[DisableSplashScreen.cs](./DisableSplashScreen.cs)」を Unity プロジェクトの Assets フォルダ以下に追加するだけです
 
 ## 説明
 
