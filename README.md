@@ -22,7 +22,3 @@ Unity Personal ライセンスでも「[SplashScreen.Stop](https://docs.unity3d.
 * Android Mono2x ビルド
 * Android IL2CPP ビルド
 * WebGL IL2CPP ビルド
-
-## 注意
-
-* Package Manager で本パッケージを導入した場合は一部のプラットフォームで正常に動作しません
